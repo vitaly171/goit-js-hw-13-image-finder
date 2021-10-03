@@ -3,6 +3,9 @@ import './sass/main.scss';
 import LoadMore from './js/load-more';
 import API from './js/api';
 import cardMarkup from './templates/cardTpl.hbs';
+import alert from './js/pnotify';
+import { defaults } from '@pnotify/core';
+defaults.width = '400px';
 
 
 const refs = {
@@ -14,6 +17,7 @@ const loadMore = new LoadMore({
     selector: '[data-action="load-more"]',
     hidden: true, 
 });
+
 
 const imgApi = new API();
 
@@ -30,6 +34,7 @@ function onSearch(e) {
         loadMore.disable();
     }
 
+
     loadMore.show();
     imgApi.resetPage();
     fetchCards();
@@ -44,7 +49,9 @@ function fetchCards() {
         loadMore.enable();
 
         if (cards.length === 0) {
-            loadMore.hide();
+             loadMore.disable();
+    refs.gallery.innerHTML = ''
+            throw alert({ text: 'Что-то пошло не так, проверь правильность ввода данных!' })
         }
     });
 }
