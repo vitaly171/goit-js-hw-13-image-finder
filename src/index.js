@@ -49,16 +49,19 @@ function fetchCards() {
         loadMore.enable();
 
         if (cards.length === 0) {
-             loadMore.disable();
-    refs.gallery.innerHTML = ''
-            throw alert({ text: 'Что-то пошло не так, проверь правильность ввода данных!' })
+           loadMore.hide();
+    /*refs.gallery.innerHTML = ''
+            throw alert({ text: 'Что-то пошло не так, проверь правильность ввода данных!' })*/
         }
     });
 }
 
 function onLoadMore() {
-    fetchCards();
+  fetchCards()
 }
+
+
+
 
 function renderMarkup(hits) {
     refs.gallery.insertAdjacentHTML('beforeend', cardMarkup(hits));
