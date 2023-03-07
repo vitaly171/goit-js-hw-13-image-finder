@@ -3,7 +3,7 @@ import './sass/main.scss';
 import LoadMore from './js/load-more';
 import API from './js/api';
 import cardMarkup from './templates/cardTpl.hbs';
-import alert from './js/pnotify';
+//import alert from './js/pnotify';
 import { defaults } from '@pnotify/core';
 defaults.width = '400px';
 
